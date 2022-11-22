@@ -9,11 +9,6 @@ function Square(props) {
     </button>
   );
 }
-//   render() {
-//     <button className="square" onClick={() => this.setState({ value: "X" })}>
-//       {this.state.value}
-//     </button>
-//   }
 
 class Board extends React.Component {
   constructor(props) {
@@ -29,6 +24,7 @@ class Board extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
+    squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
@@ -91,8 +87,6 @@ class Game extends React.Component {
     );
   }
 }
-
-// ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
